@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class MoveHead : MonoBehaviour {
-    [SerializeField] private float INITIAL_MOVMENT_INTERVAL;
+    [SerializeField] private float INITIAL_MOVEMENT_INTERVAL;
     private const float OFFSET = .5f;
     private float movementInterval;
     private Vector2 dir;
@@ -11,7 +11,7 @@ public class MoveHead : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        movementInterval = INITIAL_MOVMENT_INTERVAL;
+        movementInterval = INITIAL_MOVEMENT_INTERVAL;
         ih = GetComponent<InputHandler>();
 	}
 	
@@ -26,7 +26,7 @@ public class MoveHead : MonoBehaviour {
             else
             {
                 lastPosition = transform.position;
-                movementInterval = INITIAL_MOVMENT_INTERVAL;
+                movementInterval = INITIAL_MOVEMENT_INTERVAL;
                 if (ih.GetCurrentDirection() == MovementDirection.UP)
                 {
                     transform.Translate(Vector2.up*OFFSET);
@@ -45,7 +45,6 @@ public class MoveHead : MonoBehaviour {
                 }
             }
         }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,7 +55,7 @@ public class MoveHead : MonoBehaviour {
             {
                 Destroy(collision.gameObject);
                 SpawnManager.DecrementNumSpawns();
-                SetInitMovementInterval(movementInterval - .05f);
+                SetInitMovementInterval(movementInterval - MIN_INTERVAL);
             }
         }
     }
@@ -70,8 +69,8 @@ public class MoveHead : MonoBehaviour {
     {
         if (initMovementInterval > MIN_INTERVAL)
         {
-            INITIAL_MOVMENT_INTERVAL = initMovementInterval;
+            INITIAL_MOVEMENT_INTERVAL = initMovementInterval;
         }
-        else INITIAL_MOVMENT_INTERVAL = MIN_INTERVAL;
+        else INITIAL_MOVEMENT_INTERVAL = MIN_INTERVAL;
     }
 }

@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f085af7205dc1b4ab4ddd5c06758547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  INITIAL_MOVMENT_INTERVAL: 0.6
+  INITIAL_MOVEMENT_INTERVAL: 0.6
+  lastPosition: {x: 0, y: 0}
 --- !u!114 &114785649177666294
 MonoBehaviour:
   m_ObjectHideFlags: 1
