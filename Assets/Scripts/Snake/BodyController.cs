@@ -15,12 +15,6 @@ public class BodyController : MonoBehaviour {
         lastLocation = new Vector2();      
     }
 
-   // private void Update()
-    //{
-        //lastLocation = currentLocation;
-        //currentLocation = transform.position;
-    //}
-
     public bool GetIsBody()
     {
         return isBody;

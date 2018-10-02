@@ -51,6 +51,10 @@ public class SnakeController : MonoBehaviour {
                 //update body list positions
                 for (int i = 0; i < body.Count; i++)
                 {
+                    if (body.Count == 1)
+                    {
+                        return;
+                    }
                     if (i == 0 && body.Count > 1)
                     {
                         body[i + 1].GetComponent<BodyController>().SetCurrentLocation(lastPosition);
