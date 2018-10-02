@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     void Start () {
         gameActive = true;
         score = 0;
-        ui = new UIManager();
+        ui = FindObjectOfType<UIManager>();
 	}
 
 
