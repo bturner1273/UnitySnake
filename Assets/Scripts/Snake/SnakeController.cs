@@ -47,6 +47,22 @@ public class SnakeController : MonoBehaviour {
                 {
                     transform.Translate(Vector2.left*OFFSET);
                 }
+
+                //update body list positions
+                for (int i = 0; i < body.Count; i++)
+                {
+                    if (i == 0 && body.Count > 1)
+                    {
+                        body[i + 1].GetComponent<BodyController>().SetCurrentLocation(lastPosition);
+                        i++;
+                    }
+                    else
+                    {
+                        body[i].GetComponent<BodyController>().SetCurrentLocation(body[i - 1].GetComponent<BodyController>().GetLastLocation());
+                    }
+
+                }
+
             }
         }
     }
@@ -57,17 +73,12 @@ public class SnakeController : MonoBehaviour {
         {
             if (collision.gameObject.CompareTag("SnakeBit"))
             {
-                SpawnManager.DecrementNumSpawns();
-                SetInitMovementInterval(movementInterval - MIN_INTERVAL);
-
-                //Now that the SnakeBit objects have a
-                //translate control script, instead of destroying
-                //the collided with game object we will add it to 
-                //the body List<GameObjects> that are SnakeBits.
-                //This list of gameObjects will have their positions
-                //updated in the update function, based on current
-                //and last postitions tracked by the head and snake bits
-                Destroy(collision.gameObject);
+                if (!collision.gameObject.GetComponent<BodyController>().GetIsBody()) {
+                    SpawnManager.DecrementNumSpawns();
+                    SetInitMovementInterval(movementInterval - MIN_INTERVAL);
+                    collision.gameObject.GetComponent<BodyController>().SetIsBody(true);
+                    body.Add(collision.gameObject);
+                }
             }
         }
     }

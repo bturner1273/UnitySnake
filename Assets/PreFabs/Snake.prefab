@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61648300238410756}
   - component: {fileID: 50943452201950084}
   m_Layer: 0
-  m_Name: SnakeHead
+  m_Name: Snake
   m_TagString: SnakeHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   INITIAL_MOVEMENT_INTERVAL: 0.6
-  lastPosition: {x: 0, y: 0}
 --- !u!114 &114785649177666294
 MonoBehaviour:
   m_ObjectHideFlags: 1
