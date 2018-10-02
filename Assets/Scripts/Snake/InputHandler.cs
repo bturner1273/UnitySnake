@@ -21,19 +21,19 @@ public class InputHandler : MonoBehaviour {
         if (GameManager.IsGameActive())
         {
             lastDir = currentDir;
-            if (Input.GetAxisRaw("Horizontal") < 0)
+            if (Input.GetAxisRaw("Horizontal") < 0 && lastDir != MovementDirection.RIGHT)
             {
                 currentDir = MovementDirection.LEFT;
             }
-            if (Input.GetAxisRaw("Horizontal") > 0)
+            if (Input.GetAxisRaw("Horizontal") > 0 && lastDir != MovementDirection.LEFT)
             {
                 currentDir = MovementDirection.RIGHT;
             }
-            if (Input.GetAxisRaw("Vertical") < 0)
+            if (Input.GetAxisRaw("Vertical") < 0 && lastDir != MovementDirection.UP)
             {
                 currentDir = MovementDirection.DOWN;
             }
-            if (Input.GetAxisRaw("Vertical") > 0)
+            if (Input.GetAxisRaw("Vertical") > 0 && lastDir != MovementDirection.DOWN)
             {
                 currentDir = MovementDirection.UP;
             }

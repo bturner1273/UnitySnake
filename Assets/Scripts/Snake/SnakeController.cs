@@ -82,6 +82,11 @@ public class SnakeController : MonoBehaviour {
                     SetInitMovementInterval(movementInterval - MIN_INTERVAL);
                     collision.gameObject.GetComponent<BodyController>().SetIsBody(true);
                     body.Add(collision.gameObject);
+                    GameManager.IncrementScore();
+                }
+                else
+                {
+                    GameManager.SetGameActive(false);
                 }
             }
         }
